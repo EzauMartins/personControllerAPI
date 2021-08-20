@@ -1,11 +1,14 @@
 package ezau.digitalinnovation.everis.proj.ezpersonalapi.entity;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
 public class Person {
 
     @Id
@@ -21,7 +24,7 @@ public class Person {
     @Column(nullable = false, unique = true)
     private String cpf;
 
-    @Column(nullable = false)
+    @Column
     private Date birthDate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
