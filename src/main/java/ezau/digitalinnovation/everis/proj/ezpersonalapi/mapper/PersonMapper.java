@@ -6,6 +6,9 @@ import org.mapstruct.Mapper;
 
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Mapper
 public interface PersonMapper {     /// PRECISA SER INTERFACE
@@ -15,5 +18,7 @@ public interface PersonMapper {     /// PRECISA SER INTERFACE
     Person toModel(PersonDTO personDTO);
 
     PersonDTO toDTO(Person person);
+
+
 
 }

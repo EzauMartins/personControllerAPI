@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController                         //IndicaControladorAcessadoAtravesDeAPIrest
 @RequestMapping("/ApiEz/01/people")     //IndicaLocalDaRequisição(GET)
@@ -25,6 +26,11 @@ public class PersonController {
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO){ //RequestBody Indica que virá de uma requisição
         return personService.createPerson(personDTO);
+    }
+
+    @GetMapping
+    public List<PersonDTO> listAll(){
+       return personService.listAll();
     }
 
 }
