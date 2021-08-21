@@ -1,14 +1,20 @@
 package ezau.digitalinnovation.everis.proj.ezpersonalapi.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person {
 
     @Id
@@ -24,8 +30,7 @@ public class Person {
     @Column(nullable = false, unique = true)
     private String cpf;
 
-    @Column
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
     private List<Phone> phones;             //cascade serve para cadastra a classe indicada já junto ao Person
