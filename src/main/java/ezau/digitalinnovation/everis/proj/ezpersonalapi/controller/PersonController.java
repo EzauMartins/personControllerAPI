@@ -2,7 +2,8 @@ package ezau.digitalinnovation.everis.proj.ezpersonalapi.controller;
 
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.dto.MessageResponseDTO;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.dto.request.PersonDTO;
-import ezau.digitalinnovation.everis.proj.ezpersonalapi.entity.Person;
+
+import ezau.digitalinnovation.everis.proj.ezpersonalapi.exception.PersonNotFoundException;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,11 @@ public class PersonController {
     @GetMapping
     public List<PersonDTO> listAll(){
        return personService.listAll();
+    }
+
+    @GetMapping("/{id}")
+    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+        return personService.findById(id);
     }
 
 }

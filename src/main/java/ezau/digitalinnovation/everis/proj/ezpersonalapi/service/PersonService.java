@@ -3,12 +3,14 @@ package ezau.digitalinnovation.everis.proj.ezpersonalapi.service;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.dto.MessageResponseDTO;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.dto.request.PersonDTO;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.entity.Person;
+import ezau.digitalinnovation.everis.proj.ezpersonalapi.exception.PersonNotFoundException;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.mapper.PersonMapper;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -44,4 +46,13 @@ public class PersonService {
                 .map(personMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    public PersonDTO findById(Long id) throws PersonNotFoundException {
+        //Optional<Person> optionalPerson = personRepository.findById(id);
+        Person person = personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+
+        return personMapper.toDTO(person);
+    }
+
+
 }
