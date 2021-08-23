@@ -5,6 +5,7 @@ import ezau.digitalinnovation.everis.proj.ezpersonalapi.dto.request.PersonDTO;
 
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.exception.PersonNotFoundException;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.service.PersonService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +15,17 @@ import java.util.List;
 
 @RestController                         //IndicaControladorAcessadoAtravesDeAPIrest
 @RequestMapping("/ApiEz/01/people")     //IndicaLocalDaRequisição(GET)
+@AllArgsConstructor(onConstructor = @__(@Autowired)) // Desconsidera uso de construtor
 public class PersonController {
 
     private PersonService personService;
 
+    /*
     @Autowired
-    public PersonController(PersonService personService) {
+    public PersonController(PersonService personService) { // Contrutores
         this.personService = personService;
     }
+    */
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

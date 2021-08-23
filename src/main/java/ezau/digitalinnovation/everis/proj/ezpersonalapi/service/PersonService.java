@@ -6,6 +6,7 @@ import ezau.digitalinnovation.everis.proj.ezpersonalapi.entity.Person;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.exception.PersonNotFoundException;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.mapper.PersonMapper;
 import ezau.digitalinnovation.everis.proj.ezpersonalapi.repository.PersonRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,16 +16,17 @@ import java.util.stream.Collectors;
 
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired)) // Substitue Construtor
 public class PersonService {
 
     private PersonRepository personRepository;
 
     private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
-    @Autowired
-    public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
+//    @Autowired
+//    public PersonService(PersonRepository personRepository) { // Contrutor
+//        this.personRepository = personRepository;
+//    }
 
 
     public MessageResponseDTO createPerson(PersonDTO personDTO) { //RequestBody Indica que virá de uma requisição
