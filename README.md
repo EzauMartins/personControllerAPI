@@ -16,4 +16,8 @@ H2 DataBase: banco de dados em memoria
 SpringBootActuator: Metricas de desempenho
 
 ///// SITE HEROKU DEPLOY EM NUVEM - CONECTA AO GITHUBREPOSITORY
-//Não roda java 11. para rodar (Criar arquivo "[system.properties](http://system.properties)" Escrever: java.runtime.version=11 )
+//Java 11 (Criar arquivo "[system.properties]" Escrever: java.runtime.version=11 )
+
+======
+RUN
+localhost:8080/ApiEz/01/people/(GET-POST-DELETE-UPDATE)
